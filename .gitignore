@@ -1,0 +1,13 @@
+*
+# Only allow the following:
+!.gitattributes
+!.gitignore
+!.gitkeep
+!readme.md
+!README.md
+!license.md
+!LICENSE.md
+!*.htm
+!*.html
+!*.js
+!*/
