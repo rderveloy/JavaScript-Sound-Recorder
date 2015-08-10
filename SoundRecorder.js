@@ -96,14 +96,47 @@ function WavFileBlob(desiredDataView)
     };
     
     this.downloadLocally = function()
-    {               
-        var url  = (window.URL || window.webkitURL).createObjectURL(this.dataBlob);
+    {   
+    	var url  = (window.URL || window.webkitURL).createObjectURL(this.dataBlob);
+        var fileName = this.generateFileName();
+        console.log("WavFileBlob->downloadLocally(): The URL is: "+url);
+        console.log("WavFileBlob->downloadLocally(): The file name is: "+url);
+		
         var link = window.document.createElement('a');
         link.href = url;
-        link.download = this.generateFileName();
+        link.download = fileName;
+        link.target = "_blank";
+        //link.click(); //This does not work in firefox.
+		
+	//This doesn't work with firefox either:
+	/*
         var click = document.createEvent("Event");
         click.initEvent("click", true, true);
         link.dispatchEvent(click);
+	*/
+		
+	//Firefox is special:
+	//See: https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent
+	var EVENT_TYPE           = 'MouseEvents';
+	var EVENT_NAME           = 'click';
+	var CAN_BUBBLE           = true;
+	var CANCELABLE           = true;
+	var VIEW                 = document.defaultView;
+	var DETAIL               = 1;
+	var SCREEN_X             = 0;
+	var SCREEN_Y             = 0;
+	var CLIENT_X             = 0;
+	var CLIENT_Y             = 0;
+	var CTRL_KEY_PRESSED     = false;
+	var ALT_KEY_PRESSED      = false;
+	var SHIFT_KEY_PRESSED    = false;
+	var META_KEY_PRESSED     = false;
+	var MOUSE_BUTTON         = 0;
+	var RELATED_EVENT_TARGET = null;
+	
+	var event = document.createEvent(EVENT_TYPE);
+	event.initMouseEvent(EVENT_NAME, CAN_BUBBLE, CANCELABLE, VIEW, DETAIL, SCREEN_X, SCREEN_Y, CLIENT_X, CLIENT_Y, CTRL_KEY_PRESSED, ALT_KEY_PRESSED, SHIFT_KEY_PRESSED, META_KEY_PRESSED, MOUSE_BUTTON, RELATED_EVENT_TARGET);
+	link.dispatchEvent(event);
     };
     
     this.sendToURL = function(desiredURL, desiredSuccessCallback, desiredFailureCallback, desiredProgressBarValueSetterCallback)
