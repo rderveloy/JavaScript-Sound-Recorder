@@ -1,4 +1,4 @@
-The Code Herein is Copyright (c) 2012-2015 Robert Derveloy
+The Software Code Herein is Copyright (c) 2013-2015 Robert Derveloy
 
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
