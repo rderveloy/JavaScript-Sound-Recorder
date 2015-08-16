@@ -21,7 +21,7 @@ function RecordingMode(desiredSampleRate, desiredChannelCount)
     var SAMPLE_RATE   = desiredSampleRate;
     var CHANNEL_COUNT = desiredChannelCount;
               
-    //Publically accessible methods:
+    //Publicly accessible methods:
     this.getSampleRate = function()
     {
         return SAMPLE_RATE;    
@@ -43,7 +43,7 @@ var PredefinedSamplingRates=
 {
     SAMPLE_RATE_48_KHZ      : 48000   //Browser default for chrome and firefox.
     ,SAMPLE_RATE_44_1_KHZ   : 44100   //CD Audio Quality
-    ,SAMPLE_RATE_32_KHZ     : 32000   //Digitial Audio Quaility
+    ,SAMPLE_RATE_32_KHZ     : 32000   //Digital Audio Quality
     ,SAMPLE_RATE_22_05_KHZ  : 22050   //FM Radio Audio Quality
     ,SAMPLE_RATE_11_025_KHZ : 11025   //Average Mono Voice Quality ??
     ,SAMPLE_RATE_8_KHZ      : 8000    //AM Radio Audio Quality
@@ -268,10 +268,10 @@ function SoundRecorder(desiredAudioContext, desiredBufferSize, desiredSampleRate
     var rightChannel         = [];
     var recordingLength      = 0;
         
-    //Publically accessible variables:
+    //Publicly accessible variables:
     this.recorder = null; //This needs to be public so the 'onaudioprocess' event handler can be defined externally.    
     
-    //Publically accessible methods:
+    //Publicly accessible methods:
     this.cloneChannelData = function(leftChannelData, rightChannelData)
     {
         leftChannel.push (new Float32Array (leftChannelData));
