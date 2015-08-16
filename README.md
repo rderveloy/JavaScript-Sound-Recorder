@@ -8,5 +8,6 @@ Some browsers require this to be hosted from a server in order to run correctly.
 
 #Compatability:
 This is known to work correctly with the following browsers:
-- Chrome
-- Firefox
+- Chrome  (44.0.2403.155 m)
+- Firefox (39.0.3)
+- Opera   (31.0.1889.161)
