@@ -2,7 +2,10 @@
  * Author:  Robert Derveloy
  * Written: 2012-12-01
  * 
- * Copyright 2012-2015 -  All rights reserved.
+ * Copyright (c) 2012-2015 -  Robert Derveloy
+ * 
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
  *
  * Requirements:
  *  jQuery
