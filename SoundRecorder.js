@@ -167,10 +167,10 @@ function WavFileBlob(desiredDataView)
         
         console.log("WavFileBlob.sendToUrl(): ...Finished!");
                                        
-        var url = (window.URL || window.webkitURL).createObjectURL(this.dataBlob);
+        var url = (window.URL || window.webkitURL).createObjectURL(dataBlob);
         
         var data = new FormData();
-        data.append('file', this.dataBlob);
+        data.append('file', dataBlob);
         data.append('file_name',this.generateFileNameWithoutExtension());
         data.append('file_extension',this.EXTENSION);
         
