@@ -100,7 +100,7 @@ function WavFileBlob(desiredDataView)
     this.downloadLocally = function()
     {   
 
-        var url  = (window.URL || window.webkitURL).createObjectURL(this.dataBlob);
+        var url  = (window.URL || window.webkitURL).createObjectURL(dataBlob);
 		var fileName = this.generateFileName();
 		console.log("WavFileBlob->downloadLocally(): The URL is: "+url);
 		console.log("WavFileBlob->downloadLocally(): The file name is: "+url);
