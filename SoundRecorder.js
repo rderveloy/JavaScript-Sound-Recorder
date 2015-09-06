@@ -77,20 +77,19 @@ if (!Date.now)
 
 function WavFileBlob(desiredDataView)
 {
-    //TODO:  Make these private:
-    this.dataBlob = new Blob ( [ desiredDataView ], { type : 'audio/wav' } );
-    this.NAME_PREFIX = 'output';    
-    this.EXTENSION = '.wav';
+    var dataBlob    = new Blob ( [ desiredDataView ], { type : 'audio/wav' } );
+    var NAME_PREFIX = 'output';
+    var EXTENSION   = '.wav';
     
     //Public methods:
     this.generateFileName = function()
     {
-        return this.generateFileNameWithoutExtension() + this.EXTENSION;
+        return this.generateFileNameWithoutExtension() + EXTENSION;
     };
     
     this.generateFileNameWithoutExtension = function()
     {
-        return this.NAME_PREFIX + Date.now();
+        return NAME_PREFIX + Date.now();
     };
     
     this.getDataBlob = function()
@@ -101,17 +100,16 @@ function WavFileBlob(desiredDataView)
     this.downloadLocally = function()
     {   
 
-        var url  = (window.URL || window.webkitURL).createObjectURL(this.dataBlob);
+        var url  = (window.URL || window.webkitURL).createObjectURL(dataBlob);
 		var fileName = this.generateFileName();
 		console.log("WavFileBlob->downloadLocally(): The URL is: "+url);
 		console.log("WavFileBlob->downloadLocally(): The file name is: "+url);
 		
-        var link = window.document.createElement('a');
-		
-		
-        link.href = url;
+        var link      = window.document.createElement('a');
+        link.href     = url;
         link.download = fileName;
-		link.target = "_blank";
+		link.target   = "_blank";
+
 		//link.click(); //This does not work in firefox.
 		
 		//This doesn't work with firefox either:
@@ -169,10 +167,10 @@ function WavFileBlob(desiredDataView)
         
         console.log("WavFileBlob.sendToUrl(): ...Finished!");
                                        
-        var url = (window.URL || window.webkitURL).createObjectURL(this.dataBlob);
+        var url = (window.URL || window.webkitURL).createObjectURL(dataBlob);
         
         var data = new FormData();
-        data.append('file', this.dataBlob);
+        data.append('file', dataBlob);
         data.append('file_name',this.generateFileNameWithoutExtension());
         data.append('file_extension',this.EXTENSION);
         
@@ -355,18 +353,18 @@ function SoundRecorder(desiredAudioContext, desiredBufferSize, desiredSampleRate
     this.isReady = function()
     {
         
-        var eventSet = false;
+        var eventHandlerSet_onaudioprocess = false;
         if(this.recorder.onaudioprocess)
         {
-            eventSet = true;
+            eventHandlerSet_onaudioprocess = true;
         }
         else
         {            
-            eventSet = false;
-            console.log("SoundRecorder.isReady(): Recorder onaudioprocess event not set!");
+            eventHandlerSet_onaudioprocess = false;
+            console.log("SoundRecorder.isReady(): Recorder onaudioprocess event handler is not set!");
         }
         
-        return (readyFlag && eventSet);
+        return (readyFlag && eventHandlerSet_onaudioprocess);
     };
     
     this.stopRecording = function()
@@ -501,7 +499,7 @@ function SoundRecorder(desiredAudioContext, desiredBufferSize, desiredSampleRate
     {            
         //Do nothing if not recording:
         if (!this.isRecording()) return;                      
-        // Copy the data from the input buffers;
+        // Copy the data from the input buffers:
         var left = e.inputBuffer.getChannelData (0);
         var right = e.inputBuffer.getChannelData (1);
         this.cloneChannelData(left, right);            
