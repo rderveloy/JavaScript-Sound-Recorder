@@ -94,7 +94,7 @@ function WavFileBlob(desiredDataView)
     
     this.getDataBlob = function()
     {
-        return this.dataBlob;
+        return dataBlob;
     };
     
     this.downloadLocally = function()
