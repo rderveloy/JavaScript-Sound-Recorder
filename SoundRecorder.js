@@ -172,7 +172,7 @@ function WavFileBlob(desiredDataView)
         var data = new FormData();
         data.append('file', dataBlob);
         data.append('file_name',this.generateFileNameWithoutExtension());
-        data.append('file_extension',this.EXTENSION);
+        data.append('file_extension',EXTENSION);
         
         console.log("WavFileBlob.sendToUrl(): Sending AJAX query...");
         $.ajax({
